@@ -1,7 +1,7 @@
 yum -y update
 yum -y groupinstall core base "Development Tools"
 yum -y install lynx tftp-server unixODBC mysql-connector-odbc mariadb-server mariadb httpd ncurses-devel sendmail sendmail-cf sox newt-devel libxml2-devel libtiff-devel audiofile-devel gtk2-devel subversion kernel-devel git crontabs cronie cronie-anacron wget vim uuid-devel sqlite-devel net-tools gnutls-devel python-devel texinfo libuuid-devel php56w php56w-pdo php56w-mysql php56w-mbstring php56w-pear php56w-process php56w-xml php56w-opcache php56w-ldap php56w-intl php56w-soap
-pear install Console_Getopt
+
 
 systemctl start firewalld
 firewall-cmd --zone=public --add-port=80/tcp --permanent
@@ -18,7 +18,7 @@ mysql_secure_installation
 
 systemctl start httpd.service
 systemctl enable httpd.service
-
+pear install Console_Getopt
 
 adduser asterisk -M -c "Asterisk User"
 
