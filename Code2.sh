@@ -7,16 +7,18 @@ systemctl start firewalld
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --reload
 
-# Enable MariaDB
-systemctl enable mariadb.service
 
 # Start MariaDB
 systemctl start mariadb
 
+# Enable MariaDB
+systemctl enable mariadb.service
+
 mysql_secure_installation
 
-systemctl enable httpd.service
 systemctl start httpd.service
+systemctl enable httpd.service
+
 
 adduser asterisk -M -c "Asterisk User"
 
@@ -53,7 +55,7 @@ tar xvfz asterisk-16-current.tar.gz
 rm -f asterisk-16-current.tar.gz
 cd asterisk-*
 contrib/scripts/install_prereq install
-./configure --libdir=/usr/lib64 --with-pjproject-bundled
+./configure --with-jansson-bundled
 contrib/scripts/get_mp3_source.sh
 make menuselect
 
